@@ -8,6 +8,9 @@ import { DatabaseModule } from './database/database.module';
 import { IndicatorsModule } from './indicators/indicators.module';
 import { IndicatorsProviders } from './indicators/indicators.providers';
 import { IndicatorsService } from './indicators/indicators.service';
+import { MicrophonesModule } from './microphones/microphones.module';
+import { MicrophonesProviders } from './microphones/microphones.providers';
+import { MicrophonesService } from './microphones/microphones.service';
 import { WppClientService } from './WppClient.service';
 
 @Module({
@@ -15,9 +18,17 @@ import { WppClientService } from './WppClient.service';
     DatabaseModule,
     IndicatorsModule,
     ScheduleModule.forRoot(),
-    
+    MicrophonesModule
   ],
   controllers: [AppController],
-  providers: [AppService, TaskSender, IndicatorsService,...IndicatorsProviders, WppClientService],
+  providers: [
+    AppService,
+    TaskSender, 
+    IndicatorsService,
+    MicrophonesService,
+    ...IndicatorsProviders,
+    ...MicrophonesProviders, 
+    WppClientService
+  ],
 })
 export class AppModule {}
