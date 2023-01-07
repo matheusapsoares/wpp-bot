@@ -3,7 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TaskSender } from './crons/task-sender.cron';
+import { TaskSenderMicrophones } from './crons/task-sender-microphones.cron';
+import { TaskSenderIndicators } from './crons/task-sender-indicators.cron';
 import { DatabaseModule } from './database/database.module';
 import { IndicatorsModule } from './indicators/indicators.module';
 import { IndicatorsProviders } from './indicators/indicators.providers';
@@ -23,7 +24,8 @@ import { WppClientService } from './WppClient.service';
   controllers: [AppController],
   providers: [
     AppService,
-    TaskSender, 
+    TaskSenderIndicators,
+    TaskSenderMicrophones, 
     IndicatorsService,
     MicrophonesService,
     ...IndicatorsProviders,
