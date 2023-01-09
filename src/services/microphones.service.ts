@@ -14,11 +14,11 @@ export class MicrophonesService {
     return this.microphoneRepository.find();
   }
 
-  async findByDate(date: string):  Promise<Microphones[]> {
+  async findByDate(date: string, send: boolean):  Promise<Microphones[]> {
     return this.microphoneRepository.find({
       where: {
         date: date,
-        send: false
+        send: send
       }
     });
   }

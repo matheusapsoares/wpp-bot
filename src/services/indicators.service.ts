@@ -14,11 +14,11 @@ export class IndicatorsService {
     return this.indicatorRepository.find();
   }
 
-  async findByDate(date: string):  Promise<Indicators[]> {
+  async findByDate(date: string, send: boolean):  Promise<Indicators[]> {
     return this.indicatorRepository.find({
       where: {
         date: date,
-        send: false
+        send: send
       }
     });
   }

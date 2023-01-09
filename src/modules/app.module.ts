@@ -12,23 +12,31 @@ import { MicrophonesModule } from './microphones.module';
 import { MicrophonesProviders } from '../providers/microphones.providers';
 import { MicrophonesService } from '../services/microphones.service';
 import { WppClientService } from '../services/WppClient.service';
+import { PersonsModule } from './persons.module';
+import { PersonsService } from 'src/services/persons.service';
+import { PersonsProviders } from 'src/providers/persons.providers';
+import { TaskSenderNotifications } from 'src/crons/task-sender-notifications.cron';
 
 @Module({
   imports: [
     DatabaseModule,
-    IndicatorsModule,
     ScheduleModule.forRoot(),
-    MicrophonesModule
+    IndicatorsModule,
+    MicrophonesModule,
+    PersonsModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
     TaskSenderIndicators,
-    TaskSenderMicrophones, 
+    TaskSenderMicrophones,
+    TaskSenderNotifications, 
     IndicatorsService,
     MicrophonesService,
+    PersonsService,
     ...IndicatorsProviders,
     ...MicrophonesProviders, 
+    ...PersonsProviders, 
     WppClientService
   ],
 })

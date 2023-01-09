@@ -16,7 +16,7 @@ export class TaskSenderMicrophones {
     async handler() {
         const now = new Date()
         const date = now.toISOString().split('T')[0];
-        const microphones = await this.microphonesService.findByDate(date); // busca todos os microfones dia dia
+        const microphones = await this.microphonesService.findByDate(date, false); // busca todos os microfones dia dia
         for (const microphone of microphones) {
             const msgOi = `Olá ${microphone.name} tudo bem ? 🙂`;
             await this.wppClient.sendText(`5511${microphone.number}@c.us`,msgOi) // envia mensagem de cumprimento
