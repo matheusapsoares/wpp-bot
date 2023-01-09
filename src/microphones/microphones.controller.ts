@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { WppClientService } from 'src/services/WppClient.service';
-import { MicrophonesService } from '../services/microphones.service';
+import { WppClientService } from 'src/WppClient.service';
+import { MicrophonesService } from './microphones.service';
 
 @Controller('microphones')
 export class MicrophonesController {

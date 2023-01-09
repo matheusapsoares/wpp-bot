@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Microphones } from '../entities/microphones.entity';
+import { Microphones } from './entities/microphones.entity';
 
 export const MicrophonesProviders = [
   {

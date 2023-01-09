@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Cron, CronExpression } from "@nestjs/schedule";
-import { IndicatorsService } from "src/services/indicators.service";
-import { WppClientService } from "src/services/WppClient.service";
+import { IndicatorsService } from "src/indicators/indicators.service";
+import { WppClientService } from "src/WppClient.service";
 
 @Injectable()
 export class TaskSenderIndicators {
