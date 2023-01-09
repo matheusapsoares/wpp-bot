@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { Microphones } from './entities/microphones.entity';
+import { Microphones } from '../entities/microphones.entity';
 
 
 @Injectable()

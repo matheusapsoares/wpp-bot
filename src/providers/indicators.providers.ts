@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Indicators } from './entities/indicators.entity';
+import { Indicators } from '../entities/indicators.entity';
 
 export const IndicatorsProviders = [
   {

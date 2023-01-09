@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { Indicators } from './entities/indicators.entity';
+import { Indicators } from '../entities/indicators.entity';
 
 
 @Injectable()
