@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { IndicatorsService } from './indicators.service';
-import { IndicatorsController } from './indicators.controller';
-import { IndicatorsProviders } from './indicators.providers';
+import { IndicatorsService } from '../services/indicators.service';
+import { IndicatorsController } from '../controllers/indicators.controller';
+import { IndicatorsProviders } from '../providers/indicators.providers';
 import { DatabaseModule } from 'src/database/database.module';
 
 @Module({

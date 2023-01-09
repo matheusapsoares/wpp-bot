@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from 'src/database/database.module';
-import { MicrophonesController } from './microphones.controller';
-import { MicrophonesProviders } from './microphones.providers';
-import { MicrophonesService } from './microphones.service';
+import { MicrophonesController } from '../controllers/microphones.controller';
+import { MicrophonesProviders } from '../providers/microphones.providers';
+import { MicrophonesService } from '../services/microphones.service';
 
 @Module({
   imports:[DatabaseModule],
