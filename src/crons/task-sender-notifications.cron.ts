@@ -21,14 +21,15 @@ export class TaskSenderNotifications {
         const date = now.toISOString().split('T')[0];
 
         const coordinator = await this.personsService.findByPosition('coordinator');
-        const indicators = await this.indicatorsService.findByDate(date, true); // busca todos os indicadores dia dia
+        const indicators  = await this.indicatorsService.findByDate(date, true); // busca todos os indicadores dia dia
         const microphones = await this.microphonesService.findByDate(date, true); // busca todos os microfones dia dia
-
-        /* Envia as mensagens de alerta */
-        const msgOi = `Olá ${coordinator.name} tudo bem ? 🙂`;
-        await this.wppClient.sendText(`5511${coordinator.number}@c.us`,msgOi) // envia mensagem de cumprimento
-
-        const msg = `Estes são os irmãos designados para a reunião de hoje!\n\n*Indicadores*: ${indicators[0].name} e ${indicators[0].partnerName}\n*Microfones Volantes*: ${microphones[0].name} e ${microphones[0].partnerName}\n\nOs irmãos já foram avisados!`;
-        await this.wppClient.sendText(`5511${coordinator.number}@c.us`,msg) // envia mensagem
+        if(indicators.length > 0) {
+            /* Envia as mensagens de alerta */
+            const msgOi = `Olá ${coordinator.name} tudo bem ? 🙂`;
+            await this.wppClient.sendText(`5511${coordinator.number}@c.us`,msgOi) // envia mensagem de cumprimento
+    
+            const msg = `Estes são os irmãos designados para a reunião de hoje!\n\n*Indicadores*: ${indicators[0].name} e ${indicators[0].partnerName}\n*Microfones Volantes*: ${microphones[0].name} e ${microphones[0].partnerName}\n\nOs irmãos já foram avisados!`;
+            await this.wppClient.sendText(`5511${coordinator.number}@c.us`,msg) // envia mensagem
+        }
     }
 }
