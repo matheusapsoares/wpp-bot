@@ -25,6 +25,6 @@ export class WppClientService {
     }
 
     async sendText(to: string, body: string) {
-        this.client.sendText(to, body);
+        return this.client.sendText(to, body);
     }
 }
