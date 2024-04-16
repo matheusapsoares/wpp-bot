@@ -35,4 +35,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 package-lock.json
-/tokens
+.docker/
+.wwebjs_auth/
+.env

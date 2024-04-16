@@ -1,30 +1,36 @@
-import { create, Whatsapp } from "venom-bot";
-
+import qrcode = require('qrcode-terminal');
+import { Client, LocalAuth } from 'whatsapp-web.js';
 export class WppClientService {
-    private client: Whatsapp
-    constructor() {
-        this.initialize();
-    }
-    private initialize() {
+  private client: Client;
+  constructor() {
+    this.initialize();
+  }
+  private initialize() {
+    console.log('inicial WhatsApp Autenticated...');
+    this.client = new Client({
+      authStrategy: new LocalAuth(),
+      webVersionCache: {
+        type: 'remote',
+        remotePath:
+          'https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/2.2410.1.html',
+      },
+    });
 
-        const qr = (base64Qrimg: string) => {
-            console.log();
-        }
+    this.client.once('ready', () => {
+      console.log('Client is ready!');
+      //this.sendText('5511995189029@c.us', 'oi');
+    });
 
-        const status = (statusSession: string) => {
-            //return isLogged || notLogged || browserClose || qrReadSuccess || qrReadFail || autocloseCalled || desconnectedMobile || deleteToken || chatsAvailable || deviceNotConnected || serverWssNotConnected || noOpenBrowser || initBrowser || openBrowser || connectBrowserWs || initWhatsapp || erroPageWhatsapp || successPageWhatsapp || waitForLogin || waitChat || successChat
-        }
+    // When the client received QR-Code
+    this.client.on('qr', (qr) => {
+      qrcode.generate(qr, { small: true });
+    });
 
-        const start = (client: Whatsapp) => {
-            this.client = client
-        }
+    // Start your client
+    this.client.initialize();
+  }
 
-        create('ws-bot', qr, status)
-        .then((client) => start(client))
-        .catch((error => console.error(error)))
-    }
-
-    async sendText(to: string, body: string) {
-        return this.client.sendText(to, body);
-    }
+  async sendText(to: string, body: string) {
+    this.client.sendMessage(to, body);
+  }
 }
